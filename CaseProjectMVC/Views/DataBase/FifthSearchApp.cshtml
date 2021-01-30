@@ -1,0 +1,74 @@
+﻿@model IEnumerable<CaseProjectMVC.Models.Member>
+@{
+    ViewBag.Title = "FifthSearchApp";
+}
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery-ui.js"></script>
+<link href="~/Styles/jquery-ui.css" rel="stylesheet" />
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#ApplicationId").blur(function () {
+
+            var ApplicationId= $("#ApplicationId").val() ;
+            $.ajax({
+                type: "POST",
+                url: "/DataBase/NinthGetMember",
+                data: "{ApplicationId:"+ ApplicationId +"}",
+                contentType: "application/json",
+                datatype: JSON,
+                async: false,
+                success: function (msg) {
+                    var R = "";
+                    $("#Tabledata td").parent().remove();
+                    $("#Tabledata").append("<tr><td>Memberid</td><td>FirstName</td><td>MiddleName</td><td>LastName</td><td>Suffix</td><td>DOB</td><td>Gender</td></tr>");
+                   // alert(msg);
+                    $.each(msg, function (key, value) {
+
+
+                        R = "<tr><td>" + value.Memberid + "</td><td>" + value.FirstName + "</td><td>" + value.MiddleName + "</td><td>" + value.LastName + "</td><td>" + value.Suffix + "</td><td>" + value.DOB + "</td><td>" + value.Gender + "</td></tr>"
+                            
+                        $("#Tabledata").append($(R));
+                    })
+                    //alert(R);
+
+
+                },
+                error: function (xhr, status, error) {
+                    alert(xhr.responseText);
+                }
+
+
+
+
+            });
+
+
+
+
+
+
+        });
+        $("#lo").click(function () {
+            window.location.href = '/DataBase/First/';
+        });
+
+
+
+    });
+
+    //function fun()
+    //{
+    //    var id = document.getElementById("ApplicationId").value;
+    //    window.location.href = "/DataBase/NinthGetMember/" + id;
+    //}
+
+</script>
+<h1> SEARCH APPLICATION</h1>
+        @using (Html.BeginForm())
+{
+            <h2>ApplicationId </h2> @Html.TextBox("ApplicationId")
+    <table id="Tabledata" border="1"></table>
+    <input type="button" value="Logout" id="lo"/>
+    
+     
+}

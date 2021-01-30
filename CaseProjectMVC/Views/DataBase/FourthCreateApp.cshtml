@@ -1,0 +1,210 @@
+﻿@model CaseProjectMVC.Models.Member
+
+@{
+    ViewBag.Title = "FourthCreateApp";
+}
+
+
+<h2> CREATE APPLICATION</h2>
+
+<head>
+    <title></title>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery-ui.js"></script>
+    <link href="~/styles/jquery-ui.css" rel="stylesheet" />
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //$("#datepick").datepicker({
+            //    showOn: 'button',
+            //    buttonImage: 'images/cal.gif',
+            //    buttonImageOnly: true,
+            //    changeMonth: true,
+            //    changeYear: true,
+            //    showAnim: 'slideDown'
+            //});
+            $("#Badd").click(function () {
+                var M = {};
+                M.FirstName = $("#FirstName").val();
+                M.MiddleName = $("#MiddleName").val();
+                M.LastName = $("#LastName").val();
+                M.Gender = $("input[name='Gender']:checked").val();
+                M.Suffix = $("#Suffix").val();
+                M.DOB = $("#datepick").val();
+                
+                $.ajax({
+
+                    type: "POST",
+                    url: "/DataBase/SeventhAddMember",
+                    data: JSON.stringify(M),
+                    contentType: "application/json",
+                    datatype: JSON,
+                    async: false,
+                    success: function (msg) {
+                        alert(msg);
+                    },
+                    error: function () { alert("error"); }
+                });
+            });
+            $("#Bsave").click(function () {
+                $.ajax({
+                    type: "POST",
+                    url: "/DataBase/EighthSaveList",
+                    contentType:"application/json",
+                    datatype: JSON,
+                    async: false,
+                    success: function (msg) {
+                        alert(msg);
+                        window.location.href = '/DataBase/SixthNextPage/';
+                    },
+                    error: function () { alert("error"); }
+                });
+            });
+            $("#Bback").click(function () {
+                window.location.href = '/DataBase/SecondAdmin/';
+            });
+            $("#Bnext").click(function () {
+                window.location.href = '/DataBase/SixthNextPage/';
+            });
+            $("#lo").click(function () {
+                //alert("sa");
+                window.location.href = '/DataBase/First/';
+            });
+        });
+    </script>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        <table>
+            <tr>
+            <tr><td>First Name</td><td>@Html.TextBoxFor(m => m.FirstName)</td><td>@Html.ValidationMessageFor(m => m.FirstName)</td><td class="error">
+    @if (ViewBag.s1 == null)
+    {
+        @ViewBag.s1
+    }</td></tr>
+            <tr><td>Middle Name</td><td>@Html.TextBoxFor(m => m.MiddleName)</td><td>@Html.ValidationMessageFor(m => m.MiddleName)</td></tr>
+            <tr><td>Last Name</td><td>@Html.TextBoxFor(m => m.LastName)</td><td>@Html.ValidationMessageFor(m => m.LastName)</td></tr>
+            <tr>
+                <td>Suffix</td>
+                <td>
+                    @Html.DropDownListFor(m => m.Suffix, new List<SelectListItem>
+        {new SelectListItem{Text="-select-",Value="-"},
+        new SelectListItem{Text="Mr.",Value="Mr"},
+        new SelectListItem{Text="Ms.",Value="Ms"},
+        new SelectListItem{Text="Mrs.",Value="Mrs"}})
+                </td>
+                <td>@Html.ValidationMessageFor(m => m.Suffix)</td>
+            </tr>
+            <tr><td>Doj</td><td><input type="date" id="datepick"></td><td>@Html.ValidationMessageFor(m => m.DOB)</td></tr>
+
+            <tr>
+
+
+                <td>
+                    <input type="radio" name="Gender" value="male">Male
+                    <input type="radio" name="Gender" value="female">Female
+                </td>
+                <td>@Html.ValidationMessageFor(m => m.Gender)</td>
+            </tr>
+            <tr><td><input type="button" value="Add Member" id="Badd"></td></tr>
+            <tr>
+                <td><input type="button" value="Save and Exit" id="Bsave"></td>
+                <td><input type="button" value="Back" id="Bback"><input type="button" value="Next" id="Bnext"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="Logout" id="lo"></td>
+            </tr>
+        </table>
+    }
+</body>
+
+
+
+--------------------------------------------------
+
+
+
+@*@{
+    ViewBag.Title = "FourthCreateApp";
+}
+
+<h2>FourthCreateApp</h2>
+House hold member <h2>1</h2> of <h2>1</h2>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery-ui.js"></script>
+    <link href="~/styles/jquery-ui.css" rel="stylesheet" />
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //$("#datepick").datepicker({
+            //    showOn: 'button',
+            //    buttonImage: 'images/cal.gif',
+            //    buttonImageOnly: true,
+            //    changeMonth: true,
+            //    changeYear: true,
+            //    showAnim: 'slideDown'
+            //});
+            $("#Badd").click(function () {
+                alert("Hello");
+                var M = {};
+                M.FirstName = $("#FirstName").val();
+                M.MiddleName = $("#MiddleName").val();
+                M.LastName = $("#LastName").val();
+                M.Gender = $("input[name='Gender']:checked").val();
+                M.Suffix = $("#Suffix").val();
+                M.DOB = $("#datepick").val();
+                alert(M.FirstName);
+                alert($("#datepick").val());
+                $.ajax({
+
+                    type: "POST",
+                    url: "/DataBase/SeventhAddMember",
+                    data: JSON.stringify(M),
+                    contentType: "application/json",
+                    datatype: JSON,
+                    async: false,
+                    success: function (msg) { alert(msg); },
+                    error: function () { alert("error"); }
+                });
+            });
+            $("#Bsave").click(function () {
+                alert("lets save");
+                $.ajax({
+                    type: "POST",
+                    url: "/DataBase/EighthSaveList",
+                    contentType: "application/json",
+                    datatype: JSON,
+                    async: false,
+                    success: function (msg) { alert(msg); },
+                    error: function () { alert("error"); }
+                });
+            });
+            $("#Bback").click(function () {
+                window.location.href = '/DataBase/SecondAdmin/';
+            });
+            $("#Bnext").click(function () {
+                window.location.href = '/DataBase/SixthNextPage/';
+            });
+
+
+        });
+
+    </script>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+
+        
+    }
+</body>
+</html>*@

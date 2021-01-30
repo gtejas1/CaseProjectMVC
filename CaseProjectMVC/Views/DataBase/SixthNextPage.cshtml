@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "SixthNextPage";
+}
+
+<head>
+    <title></title>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery-ui.js"></script>
+    <link href="~/styles/jquery-ui.css" rel="stylesheet" />
+    <script type="text/javascript">
+        $(document).ready(function () {
+            
+            $("#lo").click(function () {
+                window.location.href = '/DataBase/First/';
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <h3> Your Application Has Been Submitted</h3>
+    <input type="button" value="Logout" id="lo" />
+</body>

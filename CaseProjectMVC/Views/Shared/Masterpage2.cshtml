@@ -1,0 +1,80 @@
+﻿
+
+        <!DOCTYPE HTML>
+
+        <html>
+        <head>
+            <meta name="viewport" content="width=device-width" />
+            <title>@ViewBag.Title</title>
+            <style>
+                #top {
+                    background-color: #336B87;
+                    position: absolute;
+                    top: 0px;
+                    left: 0px;
+                    width: 100%;
+                    height: 12%;
+                }
+
+                #top-one {
+                    background-color: #89DA59;
+                    position: absolute;
+                    top: 10%;
+                    left: 10%;
+                    width: 90%;
+                    height: 2%;
+                }
+
+                #middle {
+                    position: absolute;
+                    top: 27%;
+                    left: 25%;
+                    width: 75%;
+                    height: 8%;
+                }
+
+                #left {
+                    background-color: #336B87;
+                    position: absolute;
+                    top: 110px;
+                    left: 0px;
+                    width: 10%;
+                    height: 100%;
+                }
+
+                #left-one {
+                    background-color: #89DA59;
+                    position: absolute;
+                    top: 12%;
+                    left: 10%;
+                    width: 1%;
+                    height: 100%;
+                }
+            </style>
+
+
+
+        </head>
+        <body background="~/images/large_473399_yhzjs7x5pfwql2pvwnpkxngbb.jpg">
+                <div id="top">
+
+                </div>
+                <div id="top-one">
+
+                </div>
+                @*<div id="bottom">
+
+            </div>*@
+                <div id="left">
+
+                </div>
+                <div id="left-one">
+
+                </div>
+                <div id="middle" style="background-color:white;position:absolute;top:30%;left:20%;height:50%;width:45%;">
+                    
+                    @RenderBody()
+                </div>
+            </body>
+</html>
+

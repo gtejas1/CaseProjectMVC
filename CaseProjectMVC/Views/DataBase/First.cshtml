@@ -1,0 +1,92 @@
+﻿@model CaseProjectMVC.Models.Login
+@{
+    ViewBag.Title = "First";
+}
+
+<h1>LOGIN PAGE</h1>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Login Page</title>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery-ui.js"></script>
+    <link href="~/styles/jquery-ui.css" rel="stylesheet" />
+    <script type="text/javascript">
+        //function func() {
+        //    var ut = $("#ut").val();
+        //    if (ut == "admin") {
+        //        window.location.href='/DataBase/SecondAdmin';
+        //    }
+        //    else if (ut == "applicant")
+        //        window.open('/DataBase/ThirdApplicant/');
+        //}
+        //$(document).ready(function ()
+        //{
+        //    $("#submit1").click(function () {
+        //        var l = {};
+        //        l.Username = $("#un").val();
+        //        l.Password = $("#pw").val();
+        //        l.Usertype = $("#ut").val();
+
+        //        if(l.Usertype=="admin")
+        //        {
+        //            alert("Admin");
+                    //$.ajax({
+                    //    type: "POST",
+                    //    url: "/DataBase/SecondCheckLogin",
+                    //    data:JSON.stringify(l),
+                    //    contentType: "application/json",
+                    //    datatype: JSON,
+                    //    async: false,
+                    //    success: function () {
+                    //        //alert("success");
+                    //        //window.location.href = '/DataBase/FifthSearchApp/';
+                    //    },
+                    //    error: function () {
+                    //        alert("error");
+                    //    }
+                    //});
+        //            //window.open('/DataBase/SecondCheckLogin/');
+        //        }
+        //        else if(l.Usertype=="applicant")
+        //        {
+        //            alert("Applicant");
+        //            //window.location.href = '/DataBase/SecondCheckLogin/';
+        //        }
+        //        });
+        //});
+    </script>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+
+</head>
+<body>
+
+    @using (Html.BeginForm("SecondCheckLogin", "DataBase"))
+    {
+        <table>
+       
+            <tr><td>Username</td><td>@Html.TextBoxFor(m => m.Username)</td><td class="error">@Html.ValidationMessageFor(m => m.Username)</td></tr>
+            <tr><td>Password</td><td>@Html.PasswordFor(m => m.Password)</td><td class="error">@Html.ValidationMessageFor(m => m.Password)</td></tr>
+            <tr>
+                <td>Usertype</td>
+                <td>
+                    @Html.DropDownListFor(m => m.Usertype, new List<SelectListItem>
+                {
+                    new SelectListItem{Value="-",Text="Select"},
+                    new SelectListItem{Value="admin",Text="Admin"},
+                    new SelectListItem{Value="applicant",Text="Applicant"}
+                })</td>
+            <td class="error">@if (ViewBag.s != null)
+            {
+               @ViewBag.s
+            }</td></tr>
+            <tr><td><input type="submit" value="Login" id="submit1" onclick="func();" /></td></tr>
+        </table>
+
+    }
+
+</body>
+</html>

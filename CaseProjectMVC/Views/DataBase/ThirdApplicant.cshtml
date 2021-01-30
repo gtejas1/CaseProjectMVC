@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "ThirdApplicant";
+}
+
+<h1>WELCOME!  APPLICANT</h1>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery-ui.js"></script>
+    <link href="~/styles/jquery-ui.css" rel="stylesheet" />
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#sa").click(function () {
+                //alert("sa");
+                window.location.href = '/DataBase/FifthSearchApp/';
+            });
+            $("#lo").click(function () {
+                //alert("sa");
+                window.location.href = '/DataBase/First/';
+            });
+        });
+    </script>
+</head>
+<body>
+    <div>
+        <table>
+            <tr><td><input type="button" value="Search Application" id="sa"></td></tr>
+            <tr><td><input type="button" value="Search Application" id="lo"></td></tr>
+        </table>
+    </div>
+</body>
+</html>
+
